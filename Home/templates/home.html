@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block home %}
+
+<br>
+
+{% for item in messeges %}
+<div class="d-flex justify-content-center">
+  <div class="card mycard bg-light" style="border-radius: 8px;">
+    <div class="card-body">
+      <h5 class="card-title h2" style="color: rgb(47, 60, 233);">@{{ users.query.filter_by(id=item.author).first().username }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted h5">{{ item.time[0:11]}} at {{item.time[12:16] }}</h6>
+      <p class="card-text" style="color:rgb(10, 10, 10); font-size: 25px;">{{ item.messege }}</p>
+    </div>
+  </div>
+</div>
+<br>
+{% endfor %}
+
+    <style>
+      .mycard{
+        width: 78vh;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .mycard{
+        width: 48vh;
+        }
+        
+      }
+    </style>
+{% endblock %}

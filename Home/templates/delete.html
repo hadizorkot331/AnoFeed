@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Delete</title>
+{% endblock %}
+
+{% block delete %}
+<form action="{{ url_for('delete') }}" method="POST">
+    <select name="selection" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        {% for item in messeges %}
+        <option value={{item.messege_id}}>{{item.messege}}</option>
+        {% endfor %}
+    </select>
+    <div class="col-12">
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </div>
+</form>
+{% endblock %}
